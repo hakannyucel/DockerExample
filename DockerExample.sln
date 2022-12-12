@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DockerExample.WebApi", "DockerExample.WebApi\DockerExample.WebApi.csproj", "{351E1DBA-4144-4530-B23E-5DA9EFBA4FD2}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{40BF67DA-02B6-4E94-83B9-5245D360193F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{451B454F-E577-47DE-B8D5-887E62B1D8A8}"
@@ -17,15 +15,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructre", "Infrastructre", "{08ACA3AC-F4F8-4333-9A16-BF888A7F46EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DockerExample.Application", "src\Core\Application\DockerExample.Application\DockerExample.Application.csproj", "{590BD53B-A0A6-4764-B604-509F88699740}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DockerExample.Application", "src\Core\Application\DockerExample.Application\DockerExample.Application.csproj", "{590BD53B-A0A6-4764-B604-509F88699740}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DockerExample.Persistence", "src\Core\Infrastructure\DockerExample.Persistence\DockerExample.Persistence.csproj", "{A1E9B2C6-FA55-4998-95C7-9B1CC46BC316}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DockerExample.Persistence", "src\Core\Infrastructure\DockerExample.Persistence\DockerExample.Persistence.csproj", "{A1E9B2C6-FA55-4998-95C7-9B1CC46BC316}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DockerExample.Domain", "src\Core\Infrastructure\DockerExample.Domain\DockerExample.Domain.csproj", "{CCD6B359-574D-47CE-AE8D-076A70A07F5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DockerExample.Domain", "src\Core\Infrastructure\DockerExample.Domain\DockerExample.Domain.csproj", "{CCD6B359-574D-47CE-AE8D-076A70A07F5D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{F07F6EED-C850-4D72-8004-733ECB41DA86}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DockerExample.Common", "src\Common\DockerExample.Common\DockerExample.Common.csproj", "{A9C43220-2FA8-4FB9-84C1-F4A4399C2C5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DockerExample.Common", "src\Common\DockerExample.Common\DockerExample.Common.csproj", "{A9C43220-2FA8-4FB9-84C1-F4A4399C2C5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DockerExample.WebApi", "src\WebApi\DockerExample.WebApi\DockerExample.WebApi.csproj", "{18EF5638-D3FA-47A0-8213-74283292A796}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +33,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{351E1DBA-4144-4530-B23E-5DA9EFBA4FD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{351E1DBA-4144-4530-B23E-5DA9EFBA4FD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{351E1DBA-4144-4530-B23E-5DA9EFBA4FD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{351E1DBA-4144-4530-B23E-5DA9EFBA4FD2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{590BD53B-A0A6-4764-B604-509F88699740}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{590BD53B-A0A6-4764-B604-509F88699740}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{590BD53B-A0A6-4764-B604-509F88699740}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -53,6 +49,10 @@ Global
 		{A9C43220-2FA8-4FB9-84C1-F4A4399C2C5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9C43220-2FA8-4FB9-84C1-F4A4399C2C5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9C43220-2FA8-4FB9-84C1-F4A4399C2C5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18EF5638-D3FA-47A0-8213-74283292A796}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18EF5638-D3FA-47A0-8213-74283292A796}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18EF5638-D3FA-47A0-8213-74283292A796}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18EF5638-D3FA-47A0-8213-74283292A796}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +68,7 @@ Global
 		{CCD6B359-574D-47CE-AE8D-076A70A07F5D} = {08ACA3AC-F4F8-4333-9A16-BF888A7F46EC}
 		{F07F6EED-C850-4D72-8004-733ECB41DA86} = {40BF67DA-02B6-4E94-83B9-5245D360193F}
 		{A9C43220-2FA8-4FB9-84C1-F4A4399C2C5F} = {F07F6EED-C850-4D72-8004-733ECB41DA86}
+		{18EF5638-D3FA-47A0-8213-74283292A796} = {80E86B9A-6C5F-49F9-A533-C7295B6753E7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E8E7C8C0-4281-4172-BA7D-BAC689C3CE03}
