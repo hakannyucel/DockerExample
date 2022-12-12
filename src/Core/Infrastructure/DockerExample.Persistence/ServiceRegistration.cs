@@ -1,4 +1,5 @@
 ﻿using DockerExample.Application.Services.Repositories;
+using DockerExample.Application.Services.UnitOfWork;
 using DockerExample.Persistence.Contexts;
 using DockerExample.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +15,7 @@ namespace DockerExample.Persistence
       services.AddDbContext<LibraryContext>(options => options.UseSqlite(configuration.GetConnectionString("LibraryConnectionString")));
 
       services.AddScoped<IBookRepository, BookRepository>();
+      services.AddScoped<IUnitOfWork, UnitOfWork.UnitOfWork>();
 
       return services;
     }

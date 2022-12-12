@@ -1,10 +1,11 @@
 ﻿using DockerExample.Application.Services.Repositories;
+using DockerExample.Application.Services.UnitOfWork;
 using DockerExample.Persistence.Contexts;
 
 namespace DockerExample.Persistence.UnitOfWork
 {
-  public class UnitOfWork
-    {
+  public class UnitOfWork : IUnitOfWork
+  {
     private readonly LibraryContext _context;
     public UnitOfWork(LibraryContext context, IBookRepository bookRepository)
     {
