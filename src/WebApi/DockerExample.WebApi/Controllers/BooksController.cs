@@ -25,15 +25,13 @@ namespace DockerExample.WebApi.Controllers
     }
 
     [HttpPost]
-    [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(Guid), StatusCodes.Status200OK)]
     [ProducesResponseType(400)]
     public async Task<IActionResult> AddBookAsync([FromBody] CreateBookCommand command)
     {
       var result = await _mediator.Send(command);
-      if (result > 0)
-        return Ok(new { id = result });
 
-      return BadRequest();
+      return Ok(new { id = result });
     }
   }
 }

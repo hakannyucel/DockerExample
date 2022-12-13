@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DockerExample.Common.Models.Commands.Book;
 using DockerExample.Domain.Dtos.Book;
 
 namespace DockerExample.Application.Features.Book.Mapping
@@ -8,6 +9,8 @@ namespace DockerExample.Application.Features.Book.Mapping
     public MappingProfiles()
     {
       CreateMap<Domain.Entities.Book, BookDto>().ReverseMap();
+
+      CreateMap<Domain.Entities.Book, CreateBookCommand>().ReverseMap();
     }
   }
 }

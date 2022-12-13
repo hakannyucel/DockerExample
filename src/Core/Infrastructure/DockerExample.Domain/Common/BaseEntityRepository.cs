@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
 using System.Linq;
+using System.Formats.Asn1;
 
 namespace DockerExample.Domain.Common
 {
@@ -37,6 +38,11 @@ namespace DockerExample.Domain.Common
       if (orderBy != null)
         return await orderBy(query).ToListAsync(cancellationToken);
       return await query.ToListAsync(cancellationToken);
+    }
+
+    public virtual async Task AddAsync(TEntity entity)
+    {
+      await _entity.AddAsync(entity);
     }
   }
 }
