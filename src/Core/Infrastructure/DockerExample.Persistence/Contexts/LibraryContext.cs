@@ -1,5 +1,7 @@
-﻿using DockerExample.Domain.Entities;
+﻿using AutoMapper.Execution;
+using DockerExample.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System.Reflection;
 
 namespace DockerExample.Persistence.Contexts
@@ -8,7 +10,14 @@ namespace DockerExample.Persistence.Contexts
   {
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-      optionsBuilder.UseSqlite("Data Source=/library.db;Version=3;\r\n");
+      var configuration = new ConfigurationBuilder()
+          .SetBasePath(Directory.GetCurrentDirectory())
+          .AddJsonFile("appsettings.json")
+          .Build();
+
+      var connStr = configuration.GetConnectionString("LibraryConnectionString");
+      connStr = connStr.Replace("{AppDir}", AppDomain.CurrentDomain.BaseDirectory);
+      optionsBuilder.UseSqlite(connStr);
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

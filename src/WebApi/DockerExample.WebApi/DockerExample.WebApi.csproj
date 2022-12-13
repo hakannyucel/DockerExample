@@ -7,8 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="11.1.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\DockerExample.Common\DockerExample.Common.csproj" />
+    <ProjectReference Include="..\..\Core\Application\DockerExample.Application\DockerExample.Application.csproj" />
+    <ProjectReference Include="..\..\Core\Infrastructure\DockerExample.Domain\DockerExample.Domain.csproj" />
+    <ProjectReference Include="..\..\Core\Infrastructure\DockerExample.Persistence\DockerExample.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

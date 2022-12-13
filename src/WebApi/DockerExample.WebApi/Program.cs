@@ -1,5 +1,7 @@
 using DockerExample.Application;
 using DockerExample.Persistence;
+using DockerExample.Persistence.Contexts;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,10 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddPersistenceServices(builder.Configuration);
 builder.Services.AddApplicationServices();
+
+builder.Services.AddDbContext<LibraryContext>(opt =>
+  {
+  });
 
 var app = builder.Build();
 
