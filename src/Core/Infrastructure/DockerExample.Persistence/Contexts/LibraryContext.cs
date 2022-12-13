@@ -8,17 +8,24 @@ namespace DockerExample.Persistence.Contexts
 {
   public class LibraryContext : DbContext
   {
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    public LibraryContext()
     {
-      var configuration = new ConfigurationBuilder()
-          .SetBasePath(Directory.GetCurrentDirectory())
-          .AddJsonFile("appsettings.json")
-          .Build();
-
-      var connStr = configuration.GetConnectionString("LibraryConnectionString");
-      connStr = connStr.Replace("{AppDir}", AppDomain.CurrentDomain.BaseDirectory);
-      optionsBuilder.UseSqlite(connStr);
     }
+    public LibraryContext(DbContextOptions<LibraryContext> options)
+    : base(options)
+    { }
+
+    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //{
+    //  var configuration = new ConfigurationBuilder()
+    //      .SetBasePath(Directory.GetCurrentDirectory())
+    //      .AddJsonFile("appsettings.json")
+    //      .Build();
+
+    //  var connStr = configuration.GetConnectionString("LibraryConnectionString");
+    //  connStr = connStr.Replace("{AppDir}", AppDomain.CurrentDomain.BaseDirectory);
+    //  optionsBuilder.UseSqlite(connStr);
+    //}
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

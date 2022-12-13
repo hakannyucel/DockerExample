@@ -15,10 +15,6 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddPersistenceServices(builder.Configuration);
 builder.Services.AddApplicationServices();
 
-builder.Services.AddDbContext<LibraryContext>(opt =>
-  {
-  });
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

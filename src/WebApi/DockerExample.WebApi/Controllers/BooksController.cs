@@ -1,6 +1,9 @@
-﻿using DockerExample.Common.Models.Queries;
+﻿using DockerExample.Common.Models.Commands.Book;
+using DockerExample.Common.Models.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Threading.Tasks;
 
 namespace DockerExample.WebApi.Controllers
 {
@@ -19,6 +22,18 @@ namespace DockerExample.WebApi.Controllers
     public async Task<IActionResult> GetBookListAsync()
     {
       return Ok(await _mediator.Send(new GetBookListQuery()));
+    }
+
+    [HttpPost]
+    [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
+    [ProducesResponseType(400)]
+    public async Task<IActionResult> AddBookAsync([FromBody] CreateBookCommand command)
+    {
+      var result = await _mediator.Send(command);
+      if (result > 0)
+        return Ok(new { id = result });
+
+      return BadRequest();
     }
   }
 }

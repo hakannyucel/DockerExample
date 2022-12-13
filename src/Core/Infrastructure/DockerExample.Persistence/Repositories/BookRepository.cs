@@ -5,10 +5,10 @@ using DockerExample.Persistence.Contexts;
 
 namespace DockerExample.Persistence.Repositories
 {
-  public class BookRepository : BaseEntityRepository<Book, LibraryContext>, IBookRepository
-  {
-    public BookRepository(LibraryContext context) : base(context)
+    public class BookRepository : BaseEntityRepository<Book, LibraryContext>, IBookRepository
     {
+        public BookRepository(LibraryContext context) : base(context)
+        {
+        }
     }
-  }
 }

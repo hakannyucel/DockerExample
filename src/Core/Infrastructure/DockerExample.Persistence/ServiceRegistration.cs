@@ -5,6 +5,7 @@ using DockerExample.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 namespace DockerExample.Persistence
 {
@@ -12,7 +13,12 @@ namespace DockerExample.Persistence
   {
     public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
     {
-      services.AddDbContext<LibraryContext>(options => options.UseSqlite(configuration.GetConnectionString("LibraryConnectionString")));
+      services.AddDbContext<LibraryContext>(optionsBuilder =>
+      {
+        var connStr = configuration.GetConnectionString("LibraryConnectionString");
+        connStr = connStr.Replace("{AppDir}", AppDomain.CurrentDomain.BaseDirectory);
+        optionsBuilder.UseSqlite(connStr);
+      });
 
       services.AddScoped<IBookRepository, BookRepository>();
       services.AddScoped<IUnitOfWork, UnitOfWork.UnitOfWork>();
