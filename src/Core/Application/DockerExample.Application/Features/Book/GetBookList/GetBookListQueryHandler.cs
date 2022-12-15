@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 using DockerExample.Application.Services.UnitOfWork;
-using DockerExample.Common.Models.Queries;
+using DockerExample.Common.Models.Queries.Book;
 using DockerExample.Domain.Dtos.Book;
 using MediatR;
 
 namespace DockerExample.Application.Features.Book.GetBookList
 {
-  public class GetBookListQueryHandler : IRequestHandler<GetBookListQuery, List<BookDto>>
+    public class GetBookListQueryHandler : IRequestHandler<GetBookListQuery, List<BookDto>>
   {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
