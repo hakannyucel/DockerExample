@@ -12,5 +12,8 @@ namespace DockerExample.Domain.Common
           Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null, 
           bool noTracking = true, 
           CancellationToken cancellationToken = default);
+
+        Task<T> UpdateAsync(T entity);
+        Task DeleteAsync(Guid id);
     }
 }

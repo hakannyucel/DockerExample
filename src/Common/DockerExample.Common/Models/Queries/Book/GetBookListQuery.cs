@@ -1,9 +1,10 @@
-﻿using DockerExample.Domain.Dtos.Book;
+﻿using DockerExample.Common.Results;
+using DockerExample.Domain.Dtos.Book;
 using MediatR;
 
 namespace DockerExample.Common.Models.Queries.Book
 {
-  public class GetBookListQuery : IRequest<List<BookDto>>
+  public class GetBookListQuery : IRequest<IResult<List<BookDto>>>
     {
     }
 }

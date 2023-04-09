@@ -3,10 +3,8 @@ using MediatR;
 
 namespace DockerExample.Common.Models.Commands.Book
 {
-    public class UpdateBookCommand : IRequest<IResult<Guid>>
+    public class DeleteBookCommand : IRequest<IResult>
     {
         public Guid Id { get; set; }
-        public string Name { get; set; }
-        public int Page { get; set; }
     }
 }
