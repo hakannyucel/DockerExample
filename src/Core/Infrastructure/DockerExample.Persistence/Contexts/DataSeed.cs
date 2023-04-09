@@ -15,7 +15,7 @@ namespace DockerExample.Persistence.Contexts
             await context.Database.EnsureCreatedAsync();
             await context.Database.MigrateAsync();
 
-            if (!context.Books.Any())
+            if (context.Books.Count() <= 0)
             {
                 await context.Books.AddRangeAsync(new List<Book>
                 {
@@ -34,6 +34,8 @@ namespace DockerExample.Persistence.Contexts
                         CreateDate = DateTime.Now
                     }
                 });
+
+                await context.SaveChangesAsync();
             }
         }
     }

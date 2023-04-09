@@ -1,17 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
-using System.Linq;
-using System.Formats.Asn1;
 
 namespace DockerExample.Domain.Common
 {
-  public class BaseEntityRepository<TEntity, TContext> : IEntityRepository<TEntity>
-    where TEntity : BaseEntity, new()
-    where TContext : DbContext, new()
+    public class BaseEntityRepository<TEntity, TContext> : IEntityRepository<TEntity>
+    where TEntity : BaseEntity
+    where TContext : DbContext
   {
-    protected TContext _context;
-    protected DbSet<TEntity> _entity => _context.Set<TEntity>();
+    private TContext _context;
+    private DbSet<TEntity> _entity => _context.Set<TEntity>();
 
     public BaseEntityRepository(TContext context)
     {

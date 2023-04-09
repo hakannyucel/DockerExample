@@ -1,5 +1,6 @@
 ﻿using DockerExample.Common.Models.Commands.Book;
 using DockerExample.Common.Models.Queries.Book;
+using DockerExample.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,6 +18,7 @@ namespace DockerExample.WebApi.Controllers
     }
 
     [HttpGet]
+    [ProducesResponseType(typeof(List<Book>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetBookListAsync()
     {
       return Ok(await _mediator.Send(new GetBookListQuery()));

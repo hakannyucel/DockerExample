@@ -3,6 +3,7 @@ using System;
 using DockerExample.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
@@ -11,54 +12,42 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DockerExample.Persistence.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20221213113503_Init")]
-    partial class Init
+    [Migration("20230409193236_Initial_Migration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "7.0.0");
+            modelBuilder
+                .HasAnnotation("ProductVersion", "7.0.0")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("DockerExample.Domain.Entities.Book", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("id");
 
                     b.Property<DateTime>("CreateDate")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("datetime2")
                         .HasColumnName("create_date");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("TEXT")
+                        .HasColumnType("nvarchar(100)")
                         .HasColumnName("name");
 
                     b.Property<int>("Page")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.ToTable("books", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("bcd38015-5a8d-41d1-a1fe-a4ca7ce87a27"),
-                            CreateDate = new DateTime(2022, 12, 13, 14, 35, 3, 455, DateTimeKind.Local).AddTicks(3658),
-                            Name = "Rich Dad Poor Dad",
-                            Page = 100
-                        },
-                        new
-                        {
-                            Id = new Guid("39b0a39e-4dc0-46c8-9191-19d2357b3345"),
-                            CreateDate = new DateTime(2022, 12, 13, 14, 35, 3, 455, DateTimeKind.Local).AddTicks(3680),
-                            Name = "Fast And Slow Thinking",
-                            Page = 0
-                        });
                 });
 #pragma warning restore 612, 618
         }
