@@ -1,13 +1,11 @@
 ﻿using DockerExample.Common.Models.Commands.Book;
-using DockerExample.Common.Models.Queries;
+using DockerExample.Common.Models.Queries.Book;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System.Threading.Tasks;
 
 namespace DockerExample.WebApi.Controllers
 {
-  [Route("api/v1/[controller]")]
+    [Route("api/v1/[controller]")]
   [ApiController]
   public class BooksController : ControllerBase
   {
