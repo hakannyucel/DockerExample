@@ -1,7 +1,6 @@
 using DockerExample.Application;
 using DockerExample.Persistence;
 using DockerExample.Persistence.Contexts;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +22,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+await DataSeed.Seed(app);
 
 app.UseHttpsRedirection();
 
