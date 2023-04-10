@@ -28,21 +28,6 @@ namespace DockerExample.Persistence.Configurations
             builder.Property(x => x.CreateDate)
               .HasColumnName("create_date")
               .IsRequired();
-
-            List<Book> books = new List<Book>
-              {
-                new Book
-                {
-                  Name = "Rich Dad Poor Dad",
-                  Page = 100
-                },
-                new Book
-                {
-                  Name = "Fast And Slow Thinking"
-                }
-              };
-
-            builder.HasData(books);
         }
     }
 }
