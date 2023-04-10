@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+  dockerexample-webapi:
+    container_name: dockerexample-webapi
+    image: hakanyucel/dockerexample:latest
+    depends_on:
+      - dockerexample-sqlserver
+    restart: always
+    ports:
+      - "9001:9001"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:9001;
+    networks:
+      - dockerexample-backend
+    # build:
+    #   dockerfile: Dockerfile
+  dockerexample-sqlserver:
+    container_name: dockerexample-sqlserver
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    restart: always
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Docker!Example
+    ports:
+      - "2433:1433"
+    networks:
+      - dockerexample-backend
+networks:
+  dockerexample-backend:
+    driver: bridge
