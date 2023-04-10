@@ -23,8 +23,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-await DataSeed.Seed(app);
-
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

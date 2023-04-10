@@ -2,27 +2,21 @@
 using DockerExample.Application.Services.UnitOfWork;
 using DockerExample.Persistence.Contexts;
 using DockerExample.Persistence.Repositories;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DockerExample.Persistence
 {
     public static class ServiceRegistration
-  {
-    public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
     {
-            //services.AddDbContext<LibraryContext>(optionsBuilder =>
-            //{
-            //  optionsBuilder.UseSqlServer(configuration.GetConnectionString("Library"));
-            //});
-
+        public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
+        {
             services.AddDbContext<LibraryContext>();
 
-      services.AddScoped<IBookRepository, BookRepository>();
-      services.AddScoped<IUnitOfWork, UnitOfWork.UnitOfWork>();
+            services.AddScoped<IBookRepository, BookRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork.UnitOfWork>();
 
-      return services;
+            return services;
+        }
     }
-  }
 }
