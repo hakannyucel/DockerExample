@@ -26,7 +26,12 @@
       "launchUrl": "swagger",
       "applicationUrl": "https://localhost:7052;http://localhost:5262",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "DATABASE_SERVER": "localhost",
+        "DATABASE_NAME": "Library",
+        "DATABASE_USER": "sa",
+        "DATABASE_PASS": "Docker!Example",
+        "IS_LOCAL": "false"
       }
     },
     "IIS Express": {
