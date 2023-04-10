@@ -17,6 +17,7 @@ COPY --from=build-env /out .
 ENV DOTNET_TieredPGO 1 
 ENV DOTNET_TC_QuickJitForLoops 1 
 ENV DOTNET_ReadyToRun 0
+ENV ASPNETCORE_URLS=http://+:9001
 
 EXPOSE 9001
 ENTRYPOINT dotnet DockerExample.WebApi.dll
