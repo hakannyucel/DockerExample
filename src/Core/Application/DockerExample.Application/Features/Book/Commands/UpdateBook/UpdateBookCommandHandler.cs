@@ -22,7 +22,8 @@ namespace DockerExample.Application.Features.Book.Commands.UpdateBook
             Domain.Entities.Book dbBook = await _bookRepository.GetAsync(request.Id);
             Domain.Entities.Book requestBook = _mapper.Map<Domain.Entities.Book>(request);
 
-            _mapper.Map(dbBook, requestBook);
+            dbBook.Name = requestBook.Name;
+            dbBook.Page = requestBook.Page;
 
             return new Result<Guid>(true, "Successful", request.Id);
         }

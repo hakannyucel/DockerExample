@@ -11,6 +11,8 @@ namespace DockerExample.Application.Features.Book.Mapping
       CreateMap<Domain.Entities.Book, BookDto>().ReverseMap();
 
       CreateMap<Domain.Entities.Book, CreateBookCommand>().ReverseMap();
+
+      CreateMap<Domain.Entities.Book, UpdateBookCommand>().ReverseMap();
     }
   }
 }
