@@ -1,5 +1,8 @@
 using DockerExample.Application;
 using DockerExample.Persistence;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +16,24 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddPersistenceServices(builder.Configuration);
 builder.Services.AddApplicationServices();
 
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+          .AddJwtBearer("Bearer", options =>
+          {
+              options.RequireHttpsMetadata = false;
+              options.TokenValidationParameters = new TokenValidationParameters
+              {
+                  ValidateIssuerSigningKey = true,
+                  IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Security"])),
+                  ValidateIssuer = true,
+                  ValidIssuer = builder.Configuration["JWT:Issuer"],
+                  ValidateAudience = true,
+                  ValidAudience = builder.Configuration["JWT:Audience"],
+                  ValidateLifetime = true,
+                  ClockSkew = TimeSpan.Zero,
+                  RequireExpirationTime = true
+              };
+          });
+
 var app = builder.Build();
 
 app.UseSwagger();
@@ -20,6 +41,7 @@ app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
