@@ -1,5 +1,6 @@
 using DockerExample.Application;
 using DockerExample.Persistence;
+using DockerExample.WebApi.Middlewares;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -39,6 +40,7 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 
+app.UseGlobalExceptionMiddleware();
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
